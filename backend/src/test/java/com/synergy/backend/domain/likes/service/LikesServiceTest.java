@@ -1,8 +1,6 @@
-package com.synergy.backend.domain.likes.controller;
+package com.synergy.backend.domain.likes.service;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import static org.mockito.Mockito.*;
 
 import com.synergy.backend.domain.likes.model.entity.Likes;
 import com.synergy.backend.domain.likes.model.response.LikesInfoResponse;
@@ -24,15 +22,13 @@ import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-class LikesControllerTest {
+class LikesServiceTest {
 
     @Autowired
     private LikesRepository likesRepository;
