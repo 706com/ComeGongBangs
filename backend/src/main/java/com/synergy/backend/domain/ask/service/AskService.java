@@ -55,7 +55,7 @@ public class AskService {
                 .username(ask.getMember().getNickname())
                 .profileImageUrl(ask.getMember().getProfileImageUrl())
                 .content(ask.getContent())
-                .isSecret(ask.isSecret())
+                .isSecret(ask.getIsSecret())
                 .reply(null)  // 답변 추가
                 .build();
         return askRes;  // 성공 시 응답
@@ -98,7 +98,7 @@ public class AskService {
                     .username(ask.getMember().getNickname())
                     .profileImageUrl(ask.getMember().getProfileImageUrl())
                     .content(ask.getContent())
-                    .isSecret(ask.isSecret() && (ask.getMember().getIdx()!=memberIdx))
+                    .isSecret(ask.getIsSecret() && (ask.getMember().getIdx()!=memberIdx))
                     .reply(replyRes)  // 답변 추가
                     .build();
 

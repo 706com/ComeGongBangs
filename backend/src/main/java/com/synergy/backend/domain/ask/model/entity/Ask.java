@@ -33,8 +33,8 @@ public class Ask extends BaseEntity {
 
     private String content;
 
-    @Column(name = "is_secret", nullable = false, columnDefinition = "TINYINT(1)")
-    private boolean isSecret;
+    @Column(name = "is_secret", nullable = false)
+    private Boolean isSecret;
 
 
 
