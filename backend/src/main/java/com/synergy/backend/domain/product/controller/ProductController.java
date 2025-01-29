@@ -9,6 +9,7 @@ import com.synergy.backend.domain.product.model.response.ProductListRes;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
+import io.micrometer.core.annotation.Timed;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,8 @@ public class ProductController {
         List<ProductListRes> result = productService.searchHashTag(req, memberIdx);
         return new BaseResponse<>(result);
     }
+
+    @Timed(value ="get-detail-product")
     @GetMapping("/detail/{productIdx}")
     public BaseResponse<ProductInfoRes> getProductInfo(@PathVariable Long productIdx, @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {

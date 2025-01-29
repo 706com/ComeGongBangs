@@ -91,3 +91,17 @@ queue:
   max-size-active: ${MAX_ACTIVE}
   fixed-delay : ${FIXED_DELAY}
   necessary: ${QUEUE_NECESSARY}
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+
+#  health:
+#    defaults:
+#      enabled: true
+#
+#  endpoint:
+#    health:
+#      show-details: always
