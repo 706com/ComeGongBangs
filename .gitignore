@@ -38,3 +38,5 @@ out/
 
 ### QClass ###
 /backend/src/main/generated
+
+/backend/src/test/resources/
