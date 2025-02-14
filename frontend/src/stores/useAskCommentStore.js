@@ -21,9 +21,8 @@ export const useAskCommentStore = defineStore('askComment', {
     actions: {
         // 문의작성
         async createAskComment(productIdx, textData) {
-            const url = '/api/ask/create';
+            const url = '/api/ask';
             const req = {
-                // memberIdx: this.userIdx,
                 productIdx: productIdx,
                 content: textData,
                 isSecret: this.isSecret
@@ -33,7 +32,6 @@ export const useAskCommentStore = defineStore('askComment', {
                 const response = await axios.post(url, req, { withCredential: true });
 
                 // 새 댓글을 목록의 맨 위에 삽입하고, 기존 목록 초기화
-                // this.askCommentListAll = [response.data.result];
                 this.askCommentListAll = response.data.result;
 
                 // 페이지 번호를 0으로 리셋해서, 새로 추가된 댓글이 반영된 목록을 처음부터 불러오게 설정
@@ -47,7 +45,7 @@ export const useAskCommentStore = defineStore('askComment', {
         //페이징처리
         async readAllAskCommentList(productIdx) {
             try {
-                let url = `/api/ask/list/read?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
+                let url = `/api/ask/list?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
 
                 // 받아온 데이터가 배열인지 확인
