@@ -1,0 +1,168 @@
+name: Deploy Spring Boot to AWS EC2
+
+# 배포 조건
+# 1) backend/develop -> develop MERGE
+# 2) Labeling
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'backend') &&
+      contains(github.event.pull_request.labels.*.name, 'operation')
+    runs-on: ubuntu-latest
+
+    steps:
+      # 소스 코드를 체크아웃
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      # JDK 설정
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Grant permission
+        run: chmod +x ./gradlew
+        working-directory: ./backend
+
+      # backend 폴더로 이동해 Spring Boot 애플리케이션을 빌드
+      - name: Build project in backend folder
+        run: ./gradlew bootJar
+        working-directory: ./backend
+        env: # 환경 변수를 설정
+          AES_ALGORITHM: ${{ secrets.AES_ALGORITHM }}
+          AES_SECRET_KEY: ${{ secrets.AES_SECRET_KEY }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DDL_TYPE: ${{ secrets.DDL_TYPE }}
+          ES_HOST: ${{ secrets.ES_HOST }}
+          ES_PORT: ${{ secrets.ES_PORT }}
+          ES_URL: ${{ secrets.ES_URL }}
+          FIXED_DELAY: ${{ secrets.FIXED_DELAY }}
+          FRONT_REDIRECT_URL: ${{ secrets.FRONT_REDIRECT_URL }}
+          IMP_API_KEY: ${{ secrets.IMP_API_KEY }}
+          IMP_SECRET_KEY: ${{ secrets.IMP_SECRET_KEY }}
+          JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+          KAKAO_REDIRECT_URL: ${{ secrets.KAKAO_REDIRECT_URL }}
+          KAKAO_REST_API: ${{ secrets.KAKAO_REST_API }}
+          MAX_ACTIVE: ${{ secrets.MAX_ACTIVE }}
+          PORT: ${{ secrets.PORT }}
+          QUEUE_NECESSARY: ${{ secrets.QUEUE_NECESSARY }}
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PORT: ${{ secrets.REDIS_PORT }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          WAITING_QUEUE_SCHEDULER: ${{ secrets.WAITING_QUEUE_SCHEDULER }}
+
+      # EC2 A 또는 B에 배포: TARGET_HOST 결정
+      - name: Determine TARGET_HOST
+        id: target_host
+        run: |
+          # EC2 A가 실행 중인지 확인
+          
+          # A가 실행중이면 B에 배포
+          if nc -z -v ${{ secrets.EC2_HOST_BACK_A }} 8080; then
+            echo "EC2 A가 실행 중입니다. EC2 B에 배포합니다..."
+               
+            echo "TARGET_HOST=${{ secrets.EC2_HOST_BACK_B }}" >> $GITHUB_ENV  # (B)
+            echo "OTHER_HOST=${{ secrets.EC2_HOST_BACK_A }}" >> $GITHUB_ENV  # 반대 EC2 (A)
+               
+            echo "TARGET_EC2_SSH_KEY<<EOF" >> $GITHUB_ENV
+            echo "${{ secrets.EC2_SSH_KEY_BACK_B }}" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+             
+            echo "OTHER_EC2_SSH_KEY<<EOF" >> $GITHUB_ENV
+            echo "${{ secrets.EC2_SSH_KEY_BACK_A }}" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          
+          # A가 실행중이지 않으면 A에 배포
+          else
+            echo "EC2 A가 실행 중이지 않습니다. EC2 A에 배포합니다..."
+          
+            echo "TARGET_HOST=${{ secrets.EC2_HOST_BACK_A }}" >> $GITHUB_ENV   # (A)
+            echo "OTHER_HOST=${{ secrets.EC2_HOST_BACK_B }}" >> $GITHUB_ENV  # 반대 EC2 (B)
+          
+            echo "TARGET_EC2_SSH_KEY<<EOF" >> $GITHUB_ENV
+            echo "${{ secrets.EC2_SSH_KEY_BACK_A }}" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+
+            echo "OTHER_EC2_SSH_KEY<<EOF" >> $GITHUB_ENV
+            echo "${{ secrets.EC2_SSH_KEY_BACK_B }}" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV                     
+          fi
+
+#      # 빌드 파일을 EC2 인스턴스로 전송
+#      - name: Copy build files to EC2
+#        uses: appleboy/scp-action@master
+#        with:
+#          host: ${{ secrets.EC2_HOST_BACK }}
+#          username: ubuntu
+#          key: ${{ secrets.EC2_SSH_KEY_BACK }}
+#          source: "./backend/build/libs/backend-0.1.jar"
+#          target: "/home/ubuntu/action/"
+
+      # 빌드 파일을 EC2 인스턴스로 전송
+      - name: Copy build files to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.TARGET_HOST }} # 여기서 TARGET_HOST 사용
+          username: ubuntu
+          key: ${{ env.TARGET_EC2_SSH_KEY }} # 여기서 EC2_SSH_KEY 사용
+          source: "./backend/build/libs/backend-0.1.jar"
+          target: "/home/ubuntu/action/"
+
+#      ## EC2 인스턴스에서 애플리케이션 실행
+#      - name: Run application on EC2
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.EC2_HOST_BACK }}
+#          username: ubuntu
+#          key: ${{ secrets.EC2_SSH_KEY_BACK }}
+#          script: |
+#            # 8080 포트에서 실행 중인 기존 프로세스 종료
+#            if lsof -i:8080 -t >/dev/null; then
+#              kill -9 $(lsof -i:8080 -t)
+#            fi
+#            # 새로운 애플리케이션 실행
+#            nohup bash -c "source /home/ubuntu/.bashrc && java -jar /home/ubuntu/action/backend/build/libs/backend-0.1.jar" > /home/ubuntu/action/cgb.log 2>&1 &
+
+
+      # EC2 인스턴스에서 애플리케이션 실행
+      - name: Run application on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.TARGET_HOST }}
+          username: ubuntu
+          key: ${{ env.TARGET_EC2_SSH_KEY }}
+          script: |
+            # 8080 포트에서 실행 중인 기존 프로세스 종료 : 예방책
+            if lsof -i:8080 -t >/dev/null; then
+              kill -9 $(lsof -i:8080 -t)
+            fi
+            # 새로운 애플리케이션 실행
+            nohup bash -c "source /home/ubuntu/.bashrc && java -jar /home/ubuntu/action/backend/build/libs/backend-0.1.jar" > /home/ubuntu/action/cgb.log 2>&1 &            
+            
+      # 기존 실행중이었던 EC2에서 30초 후에 8080 프로세스 종료
+      - name: Stop application on OTHER EC2 after 30 seconds
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.OTHER_HOST }}
+          username: ubuntu
+          key: ${{ env.OTHER_EC2_SSH_KEY }}
+          script: |
+            echo "30초 후에 ${OTHER_HOST}에서 애플리케이션을 종료합니다..."
+            sleep 30
+            if lsof -i:8080 -t >/dev/null; then
+              kill -9 $(lsof -i:8080 -t)
+              echo "기존 프로세스가 종료되었습니다."
+            else
+              echo "기존 프로세스가 실행 중이지 않습니다."
+            fi
