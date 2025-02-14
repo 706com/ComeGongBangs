@@ -63,9 +63,7 @@ public class AskService {
 
 
     // 해당 상품 문의 목록 조회 서비스 메서드
-    public List<AskRes> getAskListByProduct(Long productIdx, Long memberIdx, Integer page, Integer size) throws BaseException{
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-
+    public List<AskRes> getAskListByProduct(Long productIdx, Long memberIdx, Pageable pageable) throws BaseException{
         //해당상품이 있는지 없는지
         Product product = productRepository.findById(productIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
