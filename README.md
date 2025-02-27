@@ -13,7 +13,7 @@
   <table  align="center">
     <tbody>
       <tr>
-        <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="https://github.com/user-attachments/assets/1c5c3222-e616-471b-aa2d-5ebff36ae3ed" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현(리더)</b></sub></a><br /></td>
+        <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="https://github.com/user-attachments/assets/1c5c3222-e616-471b-aa2d-5ebff36ae3ed" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현(팀장)</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/postrel63" style="text-decoration: none; color: lightgray;"><img src="https://i.pinimg.com/222x/4e/92/54/4e9254d45725666a3fe8855e9cca5ba9.jpg" width="100px;"  alt=""/><br /><sub><b> 🐶 김동욱</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/shinebyul" style="text-decoration: none; color: lightgray;"><img src="https://pbs.twimg.com/profile_images/3008255612/a56d6133b8f6aa19afecd19c79536a76_400x400.png" width="100px;" height="100px;" alt=""/><br /><sub><b> 🐱 한별</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/choijw1116" style="text-decoration: none; color: lightgray;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRich3DFlHTCbrEzOhs6gt6fnn1PUsNBopG2w&s" width="100px;" alt=""/><br /><sub><b> 🐧 최정완</b></sub></a><br /></td>
@@ -23,7 +23,6 @@
   </table>
 </div>
 <br>
-
 
 ---
 
@@ -78,9 +77,10 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 🎟️ 이벤트 쿠폰발급 기능
 
-<h3>
 
-[//]: # ([&#40; Click &#41; 곽동현 주요 담당 업무]&#40;https://github.com/706com/ComeGongBangs/tree/main/backend&#41;)
+[//]: # (<h3>)
+
+[//]: # ([[ 개인 ] 곽동현 담당 업무 ]&#40;https://github.com/706com/ComeGongBangs/tree/main/backend&#41;)
 
 ---
 
