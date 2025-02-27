@@ -2,35 +2,83 @@
 
 ---
 
-## ⛓️ Stacks
+[//]: # (## ⛓️ Stacks)
+
+## 📣  담당 기능
+
+**🙂 회원 기능**
+
+| 담당 업무            | 세부 사항                                                                                                        | 
+|:-----------------|:-------------------------------------------------------------------------------------------------------------|
+| 로그인 기능           | [JWT를 활용한 토큰 방식 채택, BlackList Token 도입, Redis TTL 활용](https://develop-706.tistory.com/36)                    |
+| 이메일 인증 기능        | Java Mail Sender 를 통한 UUID 인증 요청 , Redis TTL 활용                                                              |
+| 소셜 기능            | OAuth2 (Kakao) 로그인 / 회원가입 적용 , [Kubernetes 분산 서버에 의한 OAuth2 소셜 인증 실패 극복](https://develop-706.tistory.com/37) | 
+| 회원 정보 수정 / 삭제 기능 | X                                                                                                            | 
+| 로그아웃 기능          | /logout 요청이 들어오면 JWT 내포한 쿠키 삭제                                                                               | 
+
+
+<br>
+
+**❤️좋아요(찜) 및 팔로우 기능**
+
+| 담당 업무 | 세부 사항 |
+|:------|:------|
+| 작성예정  | 작성예정  |
+
+
+<br>
+
+**🎟️ 이벤트 쿠폰발급 기능**
+
+| 담당 업무 | 세부 사항 |
+|:------|:------|
+| 작성예정 | 작성예정  |
+
+[//]: # (🎈 상품 기능)
+
+[//]: # (🙆‍♀️마이 페이지 기능)
+
+[//]: # (🔨 공방 페이지 기능&#40;Atelier&#41;)
+
+[//]: # (✏️ 리뷰 및 문의 기능)
+
+[//]: # (🔎 검색 기능)
+
+[//]: # (💳 결제 및 선물하기 기능)
+
 
 ### 🚀 Backend
-<div>
-<img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/Spring data jpa-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/SMTP-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" style="border-radius: 5px;"> 
-<br>
-
-<img src="https://img.shields.io/badge/auth2-231F20?style=for-the-badge&logo=auth2&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/jwt-29b6f6?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
-<!-- <img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"> -->
-
-</div>
 
 
+
+### 프로젝트 진행 [ 24.08.29 ~ 24.10.28 ]
+| 기간                  |             세부 사항              | 
+|:--------------------|:------------------------------:|
+| 24.08.29 - 24.10.28 | 프로젝트 종료 및 Kubernetes shut down | 
 
 <br>
 
-## 📌 성능개선
+### 리팩토링 [ 24.11.02 ~ ing ]
+| 기간                  | 담당 업무                                  |                      세부 사항                      |
+|:--------------------|:---------------------------------------|:-----------------------------------------------:|
+| 24.11.02 - 24.11.10 | Github Action 을 통한 AWS 무중단 배포 및 이전     | EC2, S3, RDS, Github Action 을 활용한 Blue/Green 배포 |
+| 25.01.24 - 25.01.24 | 도메인 변경 (comegongbang -> comegongbangs) |                        X                        |
+| 25.02.24 - 25.02.24 | .yml 파일 분리                             |                 로컬/테스트/운영 환경 분리                 |
+| 25.02.25 - 25.02.25 | 정적 팩토리 메서드 패턴 적용 / DTO record class 적용 |                        X                        |
 
-#### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
-#### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
-#### &nbsp;&nbsp; &nbsp;[검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
 
-[//]: # (    <img src="img/ERD_latest.png"/>)
-[//]: # (<img src="backend/img/system_architecture.png"/>)
+[//]: # (## 📌 성능개선)
+
+[//]: # ()
+[//]: # (#### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기]&#40;https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis&#41;)
+
+[//]: # (#### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기]&#40;https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis&#41;)
+
+[//]: # (#### &nbsp;&nbsp; &nbsp;[검색기능개선 바로가기]&#40;https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash&#41;)
+
+[//]: # ()
+[//]: # ([//]: # &#40;    <img src="img/ERD_latest.png"/>&#41;)
+[//]: # ([//]: # &#40;<img src="backend/img/system_architecture.png"/>&#41;)
 
 <br>
 
