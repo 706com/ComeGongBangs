@@ -13,7 +13,7 @@
   <table  align="center">
     <tbody>
       <tr>
-        <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="https://github.com/user-attachments/assets/1c5c3222-e616-471b-aa2d-5ebff36ae3ed" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현</b></sub></a><br /></td>
+        <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="https://github.com/user-attachments/assets/1c5c3222-e616-471b-aa2d-5ebff36ae3ed" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현(리더)</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/postrel63" style="text-decoration: none; color: lightgray;"><img src="https://i.pinimg.com/222x/4e/92/54/4e9254d45725666a3fe8855e9cca5ba9.jpg" width="100px;"  alt=""/><br /><sub><b> 🐶 김동욱</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/shinebyul" style="text-decoration: none; color: lightgray;"><img src="https://pbs.twimg.com/profile_images/3008255612/a56d6133b8f6aa19afecd19c79536a76_400x400.png" width="100px;" height="100px;" alt=""/><br /><sub><b> 🐱 한별</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/choijw1116" style="text-decoration: none; color: lightgray;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRich3DFlHTCbrEzOhs6gt6fnn1PUsNBopG2w&s" width="100px;" alt=""/><br /><sub><b> 🐧 최정완</b></sub></a><br /></td>
@@ -23,6 +23,7 @@
   </table>
 </div>
 <br>
+
 
 ---
 
@@ -65,17 +66,21 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 🙆‍♀️마이 페이지 기능  
 
-🔨 공방 페이지 기능(atelier)  
+🔨 공방 페이지 기능(Atelier)  
 
 ✏️ 리뷰 및 문의 기능  
 
-❤️ 좋아요(찜) 및 팔로우 기능  
+❤️좋아요(찜) 및 팔로우 기능  
 
 🔎 검색 기능  
 
 💳 결제 및 선물하기 기능  
 
 🎟️ 이벤트 쿠폰발급 기능
+
+<h3>
+
+[//]: # ([&#40; Click &#41; 곽동현 주요 담당 업무]&#40;https://github.com/706com/ComeGongBangs/tree/main/backend&#41;)
 
 ---
 
@@ -103,31 +108,26 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ### 🚀 Frontend
 <div align="left">
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
+<img src="https://img.shields.io/badge/html/CSS/Javascript-E34F26?style=for-the-badge&logo=html5&logoColor=white" style="border-radius: 5px;"/>
+<img src="https://img.shields.io/badge/Vue_3-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
 <img src="https://img.shields.io/badge/vue_router-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
 <br>
 
-[//]: # (<img src="https://img.shields.io/badge/VCALENDAR-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white"/>)
 <img src="https://img.shields.io/badge/jwt-000000?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/pinia-gold?style=for-the-badge&logo=Pinia&logoColor=white" style="border-radius: 5px;"/>
 <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white" style="border-radius: 5px;"/>
 <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" style="border-radius: 5px;"/> 
 </div>
 
 ### 🚀 Backend
 <div>
-<img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Spring Boot_3.3.3-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Spring_Security_6.3-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/Spring data jpa-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/SMTP-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" style="border-radius: 5px;"> 
 <br>
 
-<img src="https://img.shields.io/badge/auth2-231F20?style=for-the-badge&logo=auth2&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Oauth2-231F20?style=for-the-badge&logo=Oauth2&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/jwt-29b6f6?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
 <!-- <img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"> -->
 
@@ -136,17 +136,16 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 ### 🚀 &nbsp;DB
 <div>
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" style="border-radius: 5px;"> 
-<img src="https://img.shields.io/badge/AmazonS3-e05242?style=for-the-badge&logo=AmazonS3&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/Redis-d82c20?style=for-the-badge&logo=redis&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/elasticSearch-3ebeb0?style=for-the-badge&logo=elasticsearch&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/logstash-f3bd19?style=for-the-badge&logo=logstash&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Amazon_S3-e05242?style=for-the-badge&logo=AmazonS3&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/elastic_Search-3ebeb0?style=for-the-badge&logo=elasticsearch&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/log_stash-f3bd19?style=for-the-badge&logo=logstash&logoColor=white" style="border-radius: 5px;">
 </div>
 
 ### 🚀 &nbsp;CI/CD
 <div >
-<img src="https://img.shields.io/badge/kubernates-326CE5?style=for-the-badge&logo=Kubernates&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=Kubernetes&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/discord-326CE5?style=for-the-badge&logo=discord&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" style="border-radius: 5px;">
@@ -171,9 +170,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=yellow&color=purple"/></a></a>
 -->
-
 <br>
-
 
 
 ---
