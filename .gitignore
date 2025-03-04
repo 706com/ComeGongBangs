@@ -40,3 +40,5 @@ out/
 /backend/src/main/generated
 
 /backend/src/test/resources/
+
+/backend/src/main/resources/config/
