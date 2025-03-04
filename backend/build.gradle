@@ -26,9 +26,14 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testRuntimeOnly 'com.h2database:h2'
 
-	//jpa, mariadb
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// MariaDB
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+	// H2
+	runtimeOnly 'com.h2database:h2'
+
+	// JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	//lombok
 	compileOnly 'org.projectlombok:lombok'
