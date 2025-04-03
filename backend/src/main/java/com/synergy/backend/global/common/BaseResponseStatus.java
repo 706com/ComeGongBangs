@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 public enum BaseResponseStatus {
 
+
     /**
      * 필터 단계에서 확인되는 에러는 실제 에러코드 형태여야 함.
      */
@@ -33,6 +34,9 @@ public enum BaseResponseStatus {
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
     ALREADY_EXIST_MEMBER(false, 2003, "이미 존재하는 이메일입니다."),
     CANNOT_DELETE_MEMBER(false, 2004, "회원 삭제 과정 중 오류가 발생하였습니다."),
+
+    NOT_FOUND_GRADE(false,2005,"해당하는 등급이 존재하지 않습니다."),
+    INVALID_SAVED_MEMBER(false,2006,"회원을 저장하는 도중 오류가 발생했습니다."),
 
 
     /**
@@ -88,14 +92,17 @@ public enum BaseResponseStatus {
      */
     NOT_FOUND_ASK(false, 7000, "문의 댓글을 찾을 수 없습니다."),
     DUPLICATED_ASK(false, 7001, "중복 댓글입니다."),
-    ALREADY_UPLOAD_ASK(false, 7002, "이미 등록한 댓글입니다.");
-//    NOT_FOUND_ASK(false, 7000, "문의댓글을 찾을 수 없습니다."),
+    ALREADY_UPLOAD_ASK(false, 7002, "이미 등록한 댓글입니다."),
+//    NOT_FOUND_ASK(false, 7000, "문의댓글을 찾을 수 없습니다.")
 
 
 
     /**
-     * 7000: 공통 에러
+     * 8000: 공통 에러 (validation)
      */
+
+    INVALID_REQUEST(false,8000,"요청 조건이 충족되지 않습니다.");
+
 
     private final boolean isSuccess;
     private final int code;
