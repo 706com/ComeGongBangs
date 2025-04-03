@@ -37,7 +37,7 @@ public class LikesService {
                 .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         // 상품 조회
-        Product product = productRepository.findById(productIdx)
+        Product product = productRepository.findByIdForUpdate(productIdx)
                 .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
         LikesInfoResponse likesInfoResponse;
@@ -71,7 +71,8 @@ public class LikesService {
         return likesRepository.existsByMemberAndProduct(member, product);
     }
 
-    private void liked(Member member, Product product){
+    @Transactional
+    void liked(Member member, Product product){
         Likes likes = Likes.builder()
                 .member(member)
                 .product(product)
@@ -86,7 +87,8 @@ public class LikesService {
         atelierRepository.save(atelier);
     }
 
-    private void unLiked(Member member, Product product){
+    @Transactional
+    void unLiked(Member member, Product product){
         Likes likes = likesRepository.findByMemberAndProduct(member, product).get();
         likesRepository.delete(likes);
 

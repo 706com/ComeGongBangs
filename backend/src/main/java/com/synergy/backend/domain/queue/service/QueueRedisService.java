@@ -18,7 +18,7 @@ import java.time.ZoneOffset;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
+//TODO : //https://chatgpt.com/share/678dcada-5cc8-8007-989c-c6e5b58c6655
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -104,6 +104,8 @@ public class QueueRedisService {
     }
 
     public void moveActiveQueue(String queueIdx) {
+
+        //TODO : 락 적용 X -> 처리 하는 과정에서 다중 서버 환경에서 에러 발생 가능성 높음
         double score = (double) LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         String couponIdx = queueIdx.split(":")[1];
         String activeQueueKey = ACTIVE_KEY_PREFIX.formatted(couponIdx);
