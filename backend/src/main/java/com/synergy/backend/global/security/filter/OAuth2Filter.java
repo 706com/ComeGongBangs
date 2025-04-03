@@ -64,9 +64,9 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
 
         // 회원 조회 후 DB에 없으면 회원가입
         if (!result.isPresent()) {
-            MemberSignupReq memberSignupReq = new MemberSignupReq(email, nickname);
+            MemberSignupReq memberSignupReq = MemberSignupReq.kakaoSignup(email, nickname);
 
-            member = MemberSignupReq.toEntity(memberSignupReq, new BCryptPasswordEncoder(),grade);
+            member = memberSignupReq.toEntity("kakao",grade);
 
             memberRepository.save(member);
             isFirst = true;

@@ -14,14 +14,12 @@ import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetailService;
 import com.synergy.backend.global.security.CustomUserDetails;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import java.io.IOException;
 import java.io.PrintWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,9 +61,9 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody MemberSignupReq memberSignupReq) {
-        String result = memberService.signup(memberSignupReq);
-        return ResponseEntity.ok(result);
+    public BaseResponse<String> signup(@Valid @RequestBody MemberSignupReq req) throws BaseException {
+        String result = memberService.signup(req);
+        return new BaseResponse<>(result);
     }
 
     //기본 배송지 조회
