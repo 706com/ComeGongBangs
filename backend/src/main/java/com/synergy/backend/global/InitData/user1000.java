@@ -54,7 +54,6 @@ public class user1000 {
                 .password(password)
                 .nickname(nickname)
                 .cellPhone(cellPhone)
-                .joinDate(joinDate)
                 .birthday(birthday)
                 .build();
         memberRepository.save(member);

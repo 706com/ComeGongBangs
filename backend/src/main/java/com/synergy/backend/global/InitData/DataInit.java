@@ -72,7 +72,6 @@ public class DataInit {
                     .grade(Grade.builder().idx(1L).build())
                     .password("$2a$10$QbGEtHpLQwwXv4fmQdzzluIgmpztQ57FVm0LTyiIiGCAxtwsWEn1G") //qwer1234
                     .birthday(LocalDate.now())
-                    .joinDate(LocalDateTime.now())
                     .cellPhone("000-0000-0000")
                     .nickname("member"+i)
                     .build());
