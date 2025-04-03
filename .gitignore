@@ -38,3 +38,6 @@ out/
 
 ### QClass ###
 /backend/src/main/generated
+
+### config ###
+/backend/src/main/resources/config/
