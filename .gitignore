@@ -39,6 +39,5 @@ out/
 ### QClass ###
 /backend/src/main/generated
 
-/backend/src/test/resources/
-
+### config ###
 /backend/src/main/resources/config/
