@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "member")
@@ -30,7 +29,6 @@ public class Member extends BaseEntity {
     private String password;
     private String nickname;
     private String cellPhone;
-    private LocalDateTime joinDate;
     private LocalDate birthday;
     private Boolean emailAuthentication;
     private String role;
@@ -57,14 +55,13 @@ public class Member extends BaseEntity {
     private List<Cart> carts = new ArrayList<>();
 
     @Builder
-    public Member(Long idx, String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
+    public Member(Long idx, String email, String password, String nickname, String cellPhone,
                   LocalDate birthday, String profileImageUrl, Grade grade) {
         this.idx = idx;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.cellPhone = cellPhone;
-        this.joinDate = joinDate;
         this.birthday = birthday;
         this.emailAuthentication = false;   // 이메일 인증은 받지 못한 상태
         this.role = "ROLE_USER";     // 최초 생성 USER

@@ -60,7 +60,6 @@ public class InitDataWith300000 {
                 .password(password)
                 .nickname(nickname)
                 .cellPhone(cellPhone)
-                .joinDate(joinDate)
                 .birthday(birthday)
                 .grade(grade)  // 하드코딩된 등급을 여기서 설정
                 .build();

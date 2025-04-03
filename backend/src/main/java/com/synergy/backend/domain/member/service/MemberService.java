@@ -21,8 +21,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -42,22 +40,30 @@ public class MemberService {
         return customUserDetails.getIdx();
     }
 
-    public String signup(MemberSignupReq memberSignupReq) {
-        LocalDateTime localDateTime = LocalDateTime.now();
-        localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        Grade grade = gradeRepository.findById(1L).get();
-        Member member = MemberSignupReq.toEntity(memberSignupReq, bCryptPasswordEncoder, grade);
-        Member result = memberRepository.save(member);
-
-        try {
-            if (result == null) {
-                throw new Exception("회원 저장이 잘못되었습니다.");
+    // 회원가입
+    public String signup(MemberSignupReq req) throws BaseException {
+        try{
+            // 중복 이메일 검증
+            if(isMember(req.email())){
+                throw new BaseException(BaseResponseStatus.ALREADY_EXIST_MEMBER);
             }
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+            // 암호화 비밀번호 세팅
+            String encodedPassword = bCryptPasswordEncoder.encode(req.password());
 
-        return "회원 저장 성공";
+            // 기본 등급 세팅
+            Grade grade = gradeRepository.findById(1L).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_GRADE));
+
+            //회원 저장
+            Member member = req.toEntity(encodedPassword, grade);
+            Member saved = memberRepository.save(member);
+
+            return saved.getNickname()+"님 가입을 환영합니다!";
+
+        } catch (RuntimeException e){
+            // JPA 관련 모든 런타임 예외를 여기서 잡기
+            throw new BaseException(BaseResponseStatus.INVALID_SAVED_MEMBER,e);
+        }
     }
 
 

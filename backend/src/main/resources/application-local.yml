@@ -8,12 +8,14 @@ spring:
     redis:
       port: ${REDIS_PORT}
       host: ${REDIS_HOST}
+      repositories:
+        enabled: false  # temporary stop
     elasticsearch:
       url: ${ES_URL}
       host: ${ES_HOST}
       port: ${ES_PORT}
       repositories:
-        enabled: true
+        enabled: false # temporary stop
 
   jwt:
     secret: ${JWT_SECRET_KEY}
