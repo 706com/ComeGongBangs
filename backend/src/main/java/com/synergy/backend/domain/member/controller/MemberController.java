@@ -60,6 +60,7 @@ public class MemberController {
         return new BaseResponse<>(memberIdx);
     }
 
+    //회원가입
     @PostMapping("/signup")
     public BaseResponse<String> signup(@Valid @RequestBody MemberSignupReq req) throws BaseException {
         String result = memberService.signup(req);
