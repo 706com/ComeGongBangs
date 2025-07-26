@@ -29,7 +29,7 @@
 <h3 align="center"> 📌 ComeGongbang 사이트 바로가기 </h3>
 <div align="center">
 <b align="center">🛍️ ComeGongbang 쇼핑몰 사이트</b> <br>
-<b > https://comegongbangs.kro.kr </b> <br>
+<b > https://comegongbangs.kro.kr </b> : 2025-07-26 부로 서비스 종료 <br>
 </div>
 
 ---
