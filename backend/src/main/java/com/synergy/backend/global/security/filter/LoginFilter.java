@@ -23,12 +23,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Slf4j
 @RequiredArgsConstructor
+//Spring Security에서 폼 로그인 처리를 담당하는 필터
+//UsernamePasswordAuthenticationFilter 커스텀
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
     private final RefreshTokenService refreshTokenService;
 
+    //로그인 시도-검증
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
@@ -42,13 +45,18 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String username = req.getEmail();
         String password = req.getPassword();
 
+        log.info("[Login] 로그인 요청 : login user: {}",username);
+
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username,password,null);
         return authenticationManager.authenticate(authToken);
     }
 
+
+    // 로그인 성공
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
+
 
         CustomUserDetails authMember = (CustomUserDetails) authResult.getPrincipal();
 
@@ -61,31 +69,20 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String username = authMember.getUsername();
         String nickname = authMember.getNickname();
 
-        String token = jwtUtil.createToken(idx, username,role, nickname);
+        String accessToken = jwtUtil.createToken(idx, username,role, nickname);
         String refreshToken = jwtUtil.createRefreshToken(idx,username,role,nickname);
         synchronized(this) {
             refreshTokenService.save(username, refreshToken);
-//            redisRepository.saveRefreshToken(refreshToken,username);
         }
 
-        log.info("Access : {}" , token);
-        log.info("Refresh : {}", refreshToken);
+        log.info("[JWT] Access 토큰 신규 발급 : {}" , accessToken);
+        addCookie(response,"JToken",accessToken);
 
-        Cookie cookie = new Cookie("JToken", token);
-        cookie.setPath("/");
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
+        log.info("[JWT] Refresh 토큰 신규 발급 : {}", refreshToken);
+        addCookie(response,"RefreshToken",refreshToken);
 
-        response.addCookie(cookie);
 
-        Cookie refreshCookie = new Cookie("RefreshToken", refreshToken);
-        refreshCookie.setPath("/");
-        refreshCookie.setHttpOnly(true);
-        refreshCookie.setSecure(true);
-
-        response.addCookie(refreshCookie);
-
-        log.info("login user: {}",username );
+        log.info("[Login] 로그인 성공 : login user: {}",username);
     }
 
     @Override
@@ -102,7 +99,16 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String jsonResponse = String.format("{\"errorCode\": \"AUTHENTICATION_FAILED\", \"message\": \"%s\"}", failed.getMessage());
         response.getWriter().write(jsonResponse);
 
-//        response.setStatus(401);
-//        super.unsuccessfulAuthentication(request, response, failed);
+        log.error("[Login] 로그인 실패 ");
+
+    }
+
+    // 쿠키 추가
+    private void addCookie(HttpServletResponse response, String name, String value){
+        Cookie cookie = new Cookie(name, value);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(true);
+        cookie.setPath("/");
+        response.addCookie(cookie);
     }
 }
